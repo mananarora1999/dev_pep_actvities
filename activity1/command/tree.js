@@ -1,7 +1,7 @@
 let fs = require("fs");
 let path = require("path");
 
-function fn(src) 
+function fn(src,input) 
 {
 
   if(src == undefined)
@@ -21,7 +21,7 @@ function fn(src)
    // console.log(parDir);
       
    
-   let print1 = `└──${parDir}`;
+   let print1 = input+"└──"+parDir;
    console.log(print1);
 
    for(let i=0; i<filesinDir.length; i++)
@@ -31,13 +31,11 @@ function fn(src)
      ext = ext.slice(1); 
      if(ext == "")
      {
-      //   let print2 = `\t\t└──${filesinDir[i]}`;
-      //   console.log(print2);
-        fn(path.join(cwdPath,filesinDir[i]));
+        fn(path.join(cwdPath,filesinDir[i]),"\t");
      }
      else
      { 
-      let print3 = `\t├──${filesinDir[i]}`;
+      let print3 = `\t\t├──${filesinDir[i]}`;
       console.log(print3);    
      }
    }
