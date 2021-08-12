@@ -17,23 +17,23 @@ function fn(src,input)
    let filesinDir = fs.readdirSync(cwdPath); // array of files in input dir
    
    let parDir = path.basename(cwdPath)
-   // console.log(filesinDir);
-   // console.log(parDir);
-      
    
-   let print1 = input+"└──"+parDir;
+      
+   let print1 = input+"└─────"+parDir;
+   console.log();
    console.log(print1);
 
    for(let i=0; i<filesinDir.length; i++)
    {
      
      let ext =  path.extname(filesinDir[i]);
-     ext = ext.slice(1); 
-     if(ext == "")
+
+     if(ext == "") // if dir
      {
-        fn(path.join(cwdPath,filesinDir[i]),"\t");
+        fn(path.join(cwdPath,filesinDir[i]),"\t"); // RECURSIVE CALL
      }
-     else
+
+     else // file
      { 
       let print3 = `\t\t├──${filesinDir[i]}`;
       console.log(print3);    

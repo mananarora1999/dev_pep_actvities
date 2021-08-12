@@ -19,41 +19,40 @@ function fn(src)
 
     
     let cwdPath = src;  // path of dir to be organized
-    // console.log("Input Path is",cwdPath);
+    
 
     let filesinDir = fs.readdirSync(cwdPath); // array of files in input dir
-    // console.log(filesinDir);
+    
 
-    let organizeddirPath = path.join(cwdPath,"organized_files"); // path made for organized_files dir in input dir
-    // console.log("Path of organized_files folder to be made is",organizeddirPath);
+    let organizeddirPath = path.join(cwdPath,"organized_files"); // path made for organized_files dir
+    
     if(fs.existsSync(organizeddirPath) == false)
     {
-     fs.mkdirSync(organizeddirPath); 
+     fs.mkdirSync(organizeddirPath); // organized_files dir made
     }
     
 
     for(let typesoffolders in types)
     {
-      let typesoffoldersPath = path.join(organizeddirPath,typesoffolders); // paths made for typesoffolders dir in organized_files dir
-      // console.log("Path of folder inside organized_files folder to be made is",typesoffoldersPath);
-      fs.mkdirSync(typesoffoldersPath);
+      let typesoffoldersPath = path.join(organizeddirPath,typesoffolders); // paths made for typesoffolders dir 
+      fs.mkdirSync(typesoffoldersPath); // typesoffolders dir made
     }
 
-    let othertypesoffoldersPath = path.join(organizeddirPath,"others"); // paths made for others dir in organized_files dir
-    // console.log("Path of folder inside organized_files folder to be made is",othertypesoffoldersPath);
-    fs.mkdirSync(othertypesoffoldersPath);
+    let othertypesoffoldersPath = path.join(organizeddirPath,"others"); // paths made for others dir 
+   
+    fs.mkdirSync(othertypesoffoldersPath); // others dir made
 
     
     for(let i=0; i<filesinDir.length; i++)
     {
-        let ext =  path.extname(filesinDir[i]);
+        let ext =  path.extname(filesinDir[i]); // check ext of files in input dir
         ext = ext.slice(1);
-        if(ext != "")
+        if(ext != "") // check for dir or file
         {
-         let typeoffile = extensioncheck(ext);
-         let copyFileSrcPath = path.join(cwdPath,filesinDir[i])
-         let copyFileDestPath = path.join(cwdPath,"organized_files",typeoffile,filesinDir[i])
-         fs.copyFileSync(copyFileSrcPath, copyFileDestPath);    
+         let typeoffile = extensioncheck(ext); // check for type of file based upon extension
+         let copyFileSrcPath = path.join(cwdPath,filesinDir[i])  // copy file source path
+         let copyFileDestPath = path.join(cwdPath,"organized_files",typeoffile,filesinDir[i]) // dest path with file name included
+         fs.copyFileSync(copyFileSrcPath, copyFileDestPath);    // COPY
         }        
     }
 
@@ -64,7 +63,7 @@ function extensioncheck(ext)
 {
   for(let typesoffolders in types)
   {
-    let TOF = types[typesoffolders]
+    let TOF = types[typesoffolders] // array at keys
     for(let i=0; i< TOF.length; i++)
     {
        if(ext == TOF[i])
