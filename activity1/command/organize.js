@@ -14,7 +14,7 @@ function fn(src)
   {
      src = process.cwd()
   }
-  
+
     let message = "organize command executed with path " + src;
 
     
@@ -48,10 +48,13 @@ function fn(src)
     {
         let ext =  path.extname(filesinDir[i]);
         ext = ext.slice(1);
-        let typeoffile = extensioncheck(ext);
-        let copyFileSrcPath = path.join(cwdPath,filesinDir[i])
-        let copyFileDestPath = path.join(cwdPath,"organized_files",typeoffile,filesinDir[i])
-        fs.copyFileSync(copyFileSrcPath, copyFileDestPath);            
+        if(ext != "")
+        {
+         let typeoffile = extensioncheck(ext);
+         let copyFileSrcPath = path.join(cwdPath,filesinDir[i])
+         let copyFileDestPath = path.join(cwdPath,"organized_files",typeoffile,filesinDir[i])
+         fs.copyFileSync(copyFileSrcPath, copyFileDestPath);    
+        }        
     }
 
     return message;

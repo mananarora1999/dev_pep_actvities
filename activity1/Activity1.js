@@ -18,7 +18,7 @@ let pathinput = inputArr[1];
 
 if(inputArr[0]=="tree")
 {
-    console.log(treeObj.fxn(pathinput));
+    console.log(treeObj.fxn(pathinput,``));
 }
 
 else if(inputArr[0]=="organize")
