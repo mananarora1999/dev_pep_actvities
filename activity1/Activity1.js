@@ -1,6 +1,6 @@
-let helpObj = require("../activity 1/command/help");
-let treeObj = require("../activity 1/command/tree");
-let organizeObj = require("../activity 1/command/organize");
+let helpObj = require("../activity1/command/help");
+let treeObj = require("../activity1/command/tree");
+let organizeObj = require("../activity1/command/organize");
 // main input
 //  input -> node main.js tree "path"
 // Print->tree command executed with path ""
