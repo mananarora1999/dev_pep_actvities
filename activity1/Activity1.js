@@ -28,5 +28,5 @@ else if(inputArr[0]=="organize")
 
 else if(inputArr[0]=="help")
 {
-    console.log(helpObj.fxn(pathinput));
+    console.log(helpObj.fxn());
 }
