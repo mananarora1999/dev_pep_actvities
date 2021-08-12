@@ -2,6 +2,12 @@ let fs = require("fs");
 let path = require("path");
 function fn(src) 
 {
+
+  if(src == undefined)
+  {
+     src = process.cwd()
+  }
+  
      let message = "organize command executed with path " + src;
 
      

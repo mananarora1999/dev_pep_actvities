@@ -10,6 +10,11 @@ let types =
 
 function fn(src) 
 {
+  if(src == undefined)
+  {
+     src = process.cwd()
+  }
+  
     let message = "organize command executed with path " + src;
 
     
