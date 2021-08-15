@@ -72,7 +72,8 @@ else if(filesArr.length >=1 && optionArr.length == 1 && optionArr[0].charAt(1)==
     {
         if(index != contenttobeprinted.length-1)
         {
-         console.log(contenttobeprinted[index]+"\n");
+         console.log(contenttobeprinted[index]);
+         console.log();
         }
         else
         {
