@@ -21,7 +21,7 @@ for (let index = 0; index < inputArr.length; index++)
 // console.log(filesArr);
 // console.log(optionArr);
 
-// 1st and 2nd
+// // 1st and 2nd
 if(filesArr.length >= 1 && optionArr.length == 0)
 {
     
@@ -38,7 +38,7 @@ if(filesArr.length >= 1 && optionArr.length == 0)
     console.log(contentoffile);
 }
 
-// -s
+// // -s
 else if(filesArr.length >=1 && optionArr.length == 1 && optionArr[0].charAt(1)=='s')
 {
     
@@ -53,7 +53,8 @@ else if(filesArr.length >=1 && optionArr.length == 1 && optionArr[0].charAt(1)==
     }
 
     contentoffileArr = contentoffile.split("\r\n"); // content of files to an array after spliting
-        
+   
+
     //loop to push only printable elements to a new array  
     for (let index = 0; index < contentoffileArr.length; index++) 
     {
@@ -66,24 +67,35 @@ else if(filesArr.length >=1 && optionArr.length == 1 && optionArr[0].charAt(1)==
     console.log("CONTENT/S  OF  FILE/S  is/are");
     
 
-    
-    //loop to print
-    for (let index = 0; index < contenttobeprinted.length; index++) 
+    if(contentoffileArr[contentoffileArr.length-1] == "") // if last element of the output is blank then 
     {
-        if(index != contenttobeprinted.length-1)
+        //loop to print
+        for (let index = 0; index < contenttobeprinted.length; index++) 
         {
-         console.log(contenttobeprinted[index]);
-         console.log();
+             console.log(contenttobeprinted[index]);
+             console.log();
         }
-        else
+    }
+
+    else // if last element of the output is not blank then
+    {
+        for (let index = 0; index < contenttobeprinted.length; index++) 
         {
-            console.log(contenttobeprinted[index]);
-        }
+            if(index != contenttobeprinted.length-1)
+            {
+             console.log(contenttobeprinted[index]);
+             console.log();
+            }
+            else
+            {
+                console.log(contenttobeprinted[index]);
+            }
+        }   
     }
 
 }
 
-// -n
+// // -n
 else if(filesArr.length >=1 && optionArr.length == 1 && optionArr[0].charAt(1)=='n')
 {
     
@@ -107,7 +119,7 @@ else if(filesArr.length >=1 && optionArr.length == 1 && optionArr[0].charAt(1)==
 
 }
 
-// -b
+// // -b
 else if(filesArr.length >=1 && optionArr.length == 1 && optionArr[0].charAt(1)=='b')
 {
     let contentoffile = help(filesArr);
@@ -142,51 +154,51 @@ else if(filesArr.length >=1 && optionArr.length == 1 && optionArr[0].charAt(1)==
     }
 }
 
-// -n -b
+// // -n -b
 else if(filesArr.length >=1 && optionArr.length == 2 && optionArr[0].charAt(1)=='n')
 {
     let contentoffile = help(filesArr);
-
+ 
     if(contentoffile == "")
     {
     console.log("File Does Not Exist");
     return;
     }
-
+ 
     contentoffileArr = contentoffile.split("\r\n");// content of files to an array after spliting
-   
+    
     console.log("CONTENT/S  OF  FILE/S  is/are");
-
+ 
     //loop to print
     for (let index = 0; index < contentoffileArr.length; index++) 
     {
         console.log((index+1)+" "+contentoffileArr[index]);
     }
-
+ 
 }
 
-// -b -n
+// // -b -n
 else if(filesArr.length >=1 && optionArr.length == 2 && optionArr[0].charAt(1)=='b')
 {
     let contentoffile = help(filesArr);
-
+ 
     if(contentoffile == "")
     {
     console.log("File Does Not Exist");
     return;
     }
 
-
+ 
     contentoffileArr = contentoffile.split("\r\n"); // content of files to an array after spliting
     
     console.log("CONTENT/S  OF  FILE/S  is/are");
-    
-
+     
+ 
     //loop to print
     let lineno = 0;
     for (let index = 0; index < contentoffileArr.length; index++) 
     {
-
+ 
         if(contentoffileArr[index] != '')
         {
          console.log((lineno+1)+" "+contentoffileArr[index]);
@@ -196,11 +208,11 @@ else if(filesArr.length >=1 && optionArr.length == 2 && optionArr[0].charAt(1)==
         {
          console.log(contentoffileArr[index]);
         }
-        
+         
     }
 }
 
-// -s -n -b
+// // -s -n -b
 else if(filesArr.length >=1 && optionArr.length == 3 && optionArr[0].charAt(1)=='s' && optionArr[1].charAt(1)=='n')
 {
     let contentoffile = help(filesArr);
@@ -211,9 +223,10 @@ else if(filesArr.length >=1 && optionArr.length == 3 && optionArr[0].charAt(1)==
     console.log("File Does Not Exist");
     return;
     }
-
+ 
     contentoffileArr = contentoffile.split("\r\n"); // content of files to an array after spliting
-
+   
+ 
     //loop to push only printable elements to a new array  
     for (let index = 0; index < contentoffileArr.length; index++) 
     {
@@ -222,34 +235,59 @@ else if(filesArr.length >=1 && optionArr.length == 3 && optionArr[0].charAt(1)==
             contenttobeprinted.push(contentoffileArr[index])
         }
     }
+    
         
     console.log("CONTENT/S  OF  FILE/S  is/are");
     
     //loop to print
     let lineno = 0;
     let string = "";
-    for (let index = 0; index < contenttobeprinted.length; index++) 
+
+
+    if(contentoffileArr[contentoffileArr.length-1] == "") // if last element of the output is blank then 
     {
-        if(index != contenttobeprinted.length-1)
+        //loop to print
+        
+        for (let index = 0; index < contenttobeprinted.length; index++) 
         {
-         string = string + (lineno+1) +" "+contenttobeprinted[index]+"\n"+(lineno+2)+"\n";
-         lineno = lineno + 2;
+            if(index != contenttobeprinted.length-1)
+            {
+              string = string + (lineno+1) +" "+contenttobeprinted[index]+"\n"+(lineno+2)+"\n";
+              lineno = lineno + 2;
+            }
+            else
+            {
+                string = string + (lineno+1) +" "+contenttobeprinted[index]+"\n"+(lineno+2);
+            }
         }
-        else
+    }
+
+    else // if last element of the output is not blank then
+    {
+        for (let index = 0; index < contenttobeprinted.length; index++) 
         {
-            string = string + (lineno+1) +" "+contenttobeprinted[index];
+            if(index != contenttobeprinted.length-1)
+            {
+             string = string + (lineno+1) +" "+contenttobeprinted[index]+"\n"+(lineno+2)+"\n";
+             lineno = lineno + 2;
+            }
+            else
+            {
+                string = string + (lineno+1) +" "+contenttobeprinted[index];
+            }
         }
+
     }
 
     console.log(string);
 }
 
-// -s -b -n
+// // -s -b -n
 else if(filesArr.length >=1 && optionArr.length == 3 && optionArr[0].charAt(1)=='s' && optionArr[1].charAt(1)=='b')
 {
     let contentoffile = help(filesArr);
     let contenttobeprinted = [];
-
+ 
     if(contentoffile == "")
     {
     console.log("File Does Not Exist");
@@ -272,26 +310,50 @@ else if(filesArr.length >=1 && optionArr.length == 3 && optionArr[0].charAt(1)==
     //loop to print
     let lineno = 0;
     let string = "";
-    for (let index = 0; index < contenttobeprinted.length; index++) 
+
+    if(contentoffileArr[contentoffileArr.length-1] == "") // if last element of the output is blank then 
     {
-        if(index != contenttobeprinted.length-1)
+        //loop to print
+        
+        for (let index = 0; index < contenttobeprinted.length; index++) 
         {
-         string = string + (lineno+1) +" "+contenttobeprinted[index]+"\n"+"\n";
-         lineno = lineno + 1;
-        }
-        else
-        {
-            string = string + (lineno+1) +" "+contenttobeprinted[index];
+            if(index != contenttobeprinted.length-1)
+            {
+              string = string + (lineno+1) +" "+contenttobeprinted[index]+"\n\n";
+              lineno = lineno + 1;
+            }
+            else
+            {
+                string = string + (lineno+1) +" "+contenttobeprinted[index]+"\n";
+            }
         }
     }
+
+    else // if last element of the output is not blank then
+    {
+        for (let index = 0; index < contenttobeprinted.length; index++) 
+        {
+            if(index != contenttobeprinted.length-1)
+            {
+              string = string + (lineno+1) +" "+contenttobeprinted[index]+"\n\n";
+              lineno = lineno + 1;
+            }
+            else
+            {
+                string = string + (lineno+1) +" "+contenttobeprinted[index];
+            }
+        }
+
+    }
+
+    
     console.log(string);
 }
 
-// help function
+// // help function
 function help(filesArr)
 {
     let contentoffile ="";
-    let limiter = 0;
 
     //loop to check if all file exits or not
     for (let index = 0; index < filesArr.length; index++) 
@@ -308,14 +370,14 @@ function help(filesArr)
     for (let index = 0; index < filesArr.length; index++) 
     {
         filepath = filesArr[index];
-        limiter++;
-        if(filesArr.length == limiter)
+
+        if(filesArr.length == index+1) // if last file to be read
         {
             contentoffile = contentoffile + fs.readFileSync(filepath);    
         }
-        else
+        else // if not the last file to be read
         {
-            contentoffile = contentoffile + fs.readFileSync(filepath)+"\r\n";
+            contentoffile = contentoffile + fs.readFileSync(filepath) + "\r\n"; 
         }       
     }
 
