@@ -35,8 +35,8 @@ function fn(src,input)
 
      else // file
      { 
-      let print3 = `\t\t├──${filesinDir[i]}`;
-      console.log(print3);    
+      let print2 = `\t\t├──${filesinDir[i]}`;
+      console.log(print2);    
      }
    }
    return message;
